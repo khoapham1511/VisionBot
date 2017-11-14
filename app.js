@@ -19,10 +19,19 @@ server.post('/api/messages', connector.listen());
 
 // Receive messages from the user and respond by echoing each message back (prefixed with 'You said:')
 var bot = new builder.UniversalBot(connector, function (session) {
-    session.send("Sang said: Chịch em đi anh %s", session.message.text);
     if (session.message.text == "open cmd") {
 		var child_process = require('child_process');
 		child_process.execSync("start cmd.exe");    	
+    } else if (session.message.text == "khoa") {
+    	session.send("Bot said: A khoa đẹp trai vãi cả nhân nghĩa đường");
+    } else if (session.message.text == "Duy") {
+    	session.send("Bot said: Duy là mẹ bụng bự à?");
+    } else if (session.message.text == "Lan") {
+    	session.send("Bot said: Poker face :| :| :|");
+    } else if (session.message.text == "Trung" || session.message.text == "Dang" || session.message.text == "Sang" || session.message.text == "Vinh") {
+    	session.send("Bot said: ko biết nói gì hết");
+    } else  {
+    	session.send("Bot said: You just said %s", session.message.text);
     }
 });
 
